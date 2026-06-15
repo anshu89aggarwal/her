@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:linear-gradient(135deg,#ff9a9e,#fad0c4);overflow:hidden;height:100vh;display:flex;justify-content:center;align-items:center}
+.page{display:none;text-align:center;color:white;animation:fade 1s;width:90%;max-width:700px}
+.active{display:block}
+h1{font-size:3rem;margin-bottom:20px}
+p{font-size:1.2rem;line-height:1.7}
+.btn{border:none;padding:15px 35px;border-radius:40px;font-size:1.1rem;margin:15px;cursor:pointer}
+.yes{background:#ff4f81;color:white}
+.no{background:white;color:#ff4f81;position:relative}
+@keyframes fade{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.heart{position:absolute;font-size:25px;animation:float 8s linear infinite}
+@keyframes float{0%{transform:translateY(100vh)}100%{transform:translateY(-100px);opacity:0}}
+.final-message{background:rgba(255,255,255,.15);padding:30px;border-radius:25px}
+</style>
+</head>
+<body>
+
+<div class="page active" id="page1">
+<h1>❤️ Will You Be My Girlfriend? ❤️</h1>
+<button class="btn yes" onclick="nextPage(2)">YES 💖</button>
+<button class="btn no" id="no1">NO 😝</button>
+</div>
+
+<div class="page" id="page2">
+<h1>😏 One More Question...</h1>
+<p>You will be stuck with me forever.<br>Do you agree? ❤️</p>
+<button class="btn yes" onclick="nextPage(3)">YES BABY 💕</button>
+<button class="btn no" id="no2">NO 🙈</button>
+</div>
+
+<div class="page" id="page3">
+<div class="final-message">
+<h1>💖 Thank You For Coming Back 💖</h1>
+<p>
+Thank you for coming back into my life. I can't describe how happy I am to have you with me again.
+Every day feels brighter with you, and every moment with you feels special.
+</p><br>
+<p>
+I love your smile, your laugh, your little tantrums, and even the way you make fun of me.
+You are my favorite person and my biggest happiness.
+</p><br>
+<p>
+Thank you for choosing us again. I promise to love you, support you, and annoy you forever. ❤️
+</p>
+<h2 style="margin-top:20px;">Forever Yours,<br>Anshu ❤️</h2>
+</div>
+</div>
+
+<script>
+function nextPage(n){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById('page'+n).classList.add('active');
+}
+function moveButton(btn){
+let x=Math.random()*(window.innerWidth-150);
+let y=Math.random()*(window.innerHeight-100);
+btn.style.position='absolute';
+btn.style.left=x+'px';
+btn.style.top=y+'px';
+}
+document.getElementById('no1').addEventListener('mouseover',function(){moveButton(this);});
+document.getElementById('no2').addEventListener('mouseover',function(){moveButton(this);});
+
+function createHeart(){
+const h=document.createElement('div');
+h.className='heart';
+h.innerHTML='❤️';
+h.style.left=Math.random()*100+'vw';
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),8000);
+}
+setInterval(createHeart,300);
+</script>
+</body>
+</html>
